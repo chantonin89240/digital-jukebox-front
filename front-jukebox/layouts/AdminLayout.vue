@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- <AdminHeader /> -->
         <Header/>
     </div>
 </template>
