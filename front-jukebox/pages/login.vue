@@ -5,7 +5,7 @@
         </div>
 
         <div class="right">
-            <div class="title">
+            <div class="login-title">
                 <h2>Login</h2>
             </div>
 
@@ -21,7 +21,8 @@
             <form class="form">
                 <v-text-field
                     label="Password"
-                    :rules="rules">
+                    :rules="rules"
+                    type="password">
                 </v-text-field>
             </form>
 
@@ -44,7 +45,7 @@ export default {
         ];
 
         const login = () => {
-            router.push('/home');
+            router.push('/home/home');
         };
 
         return {
@@ -88,7 +89,7 @@ export default {
     align-items: center;
 }
 
-.title {
+.login-title {
     background: #E76F51;
     -webkit-background-clip: text;
     background-clip: text;
@@ -118,7 +119,8 @@ export default {
 }
 
 .login-button {
-    color: #E76F51;
+    background-color: #E76F51;
+    color: white;
     margin-left: 5%;
     margin-right: 5%;
     padding-bottom: 5%;
