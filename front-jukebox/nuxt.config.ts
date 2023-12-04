@@ -8,6 +8,17 @@ export default defineNuxtConfig({
   css: ['@mdi/font/css/materialdesignicons.min.css'],
   devtools: { enabled: true },
   modules: [
+    [ 
+      '@nuxtjs/i18n',
+      { /* i18n options */
+        locales:[
+          "en",
+          "fr"
+        ],
+        defaultLocale: "fr",
+        
+      }
+    ],
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
@@ -24,3 +35,11 @@ export default defineNuxtConfig({
     },
   },
 });
+/*
+  modules: [
+    '@nuxtjs/i18n',
+  ],
+  i18n: {
+    /* module options 
+  }
+*/

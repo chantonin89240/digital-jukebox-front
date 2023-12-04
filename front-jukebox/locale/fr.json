@@ -1,0 +1,10 @@
+{
+    "adminLayout":{
+        "Catalogs":"Catalogues",
+        "Playlist":"Playlist",
+        "Management":"Gérance",
+        "Monitor":"Moniteur",
+        "Login":"Connection",
+        "Logout":"Se déconnecter"
+    }
+}

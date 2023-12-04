@@ -15,14 +15,19 @@
     "start": "nuxt start"
   },
   "devDependencies": {
+    "@intlify/vue-i18n-bridge": "^1.0.1",
+    "@intlify/vue-router-bridge": "^1.0.1",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge@^8.0.0-rc.6-28359903.bcd6198",
     "eslint": "^8.50.0",
+    "npm": "^10.2.4",
     "nuxt": "^3.7.4",
     "sass": "^1.69.4",
     "typescript": "^5.2.2",
     "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.3.4",
+    "vue-i18n-routing": "^1.1.4",
     "vue-router": "^4.2.5",
     "vuetify": "^3.3.19"
   },
