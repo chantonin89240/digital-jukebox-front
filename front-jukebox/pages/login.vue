@@ -5,7 +5,7 @@
         </div>
 
         <div class="right">
-            <div class="title">
+            <div class="login-title">
                 <h2>Login</h2>
             </div>
 
@@ -89,7 +89,7 @@ export default {
     align-items: center;
 }
 
-.title {
+.login-title {
     background: #E76F51;
     -webkit-background-clip: text;
     background-clip: text;
