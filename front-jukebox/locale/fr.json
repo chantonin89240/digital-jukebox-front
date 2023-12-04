@@ -1,11 +1,11 @@
 {
     "adminLayout":{
-        "Catalogs":"Catalogues",
-        "Playlist":"Playlist",
-        "Management":"Gérance",
-        "Monitor":"Moniteur",
-        "Login":"Connection",
-        "Logout":"Se déconnecter"
+        "catalogs":"Catalogues",
+        "playlist":"Playlist",
+        "management":"Gérance",
+        "monitor":"Moniteur",
+        "login":"Connection",
+        "logout":"Se déconnecter"
     },
     "listPage":{
         "headers":{
