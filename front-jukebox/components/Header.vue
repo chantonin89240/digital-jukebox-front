@@ -8,17 +8,17 @@
         <v-divider class="ms-3" inset vertical></v-divider>
         <img class="img-logo" src="~/assets/jukebox-Logo.png" alt="Jukebox Logo" />
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("Catalogs")}}</nuxt-link> <!-- to="/catalogs" -->
+        <nuxt-link class="link-header" >{{$t("adminLayout.Catalogs")}}</nuxt-link> <!-- to="/catalogs" -->
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("Playlist")}}</nuxt-link> <!-- to="/playlist" -->
+        <nuxt-link class="link-header" >{{$t("adminLayout.Playlist")}}</nuxt-link> <!-- to="/playlist" -->
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("Management")}}</nuxt-link> <!-- to="/management" -->
+        <nuxt-link class="link-header" >{{$t("adminLayout.Management")}}</nuxt-link> <!-- to="/management" -->
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("Monitor")}}</nuxt-link> <!-- to="/monitor" -->
+        <nuxt-link class="link-header" >{{$t("adminLayout.Monitor")}}</nuxt-link> <!-- to="/monitor" -->
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("Login")}}</nuxt-link> <!-- to="/login" -->
+        <nuxt-link class="link-header" >{{$t("adminLayout.Login")}}</nuxt-link> <!-- to="/login" -->
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" @click="logout">{{$t("Logout")}}</nuxt-link>
+        <nuxt-link class="link-header" @click="logout">{{$t("adminLayout.Logout")}}</nuxt-link>
 
       </v-app-bar>
     </v-app>

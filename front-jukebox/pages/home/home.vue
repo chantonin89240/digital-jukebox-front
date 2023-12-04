@@ -5,7 +5,7 @@
                 <!-- <Pochette></Pochette> -->
                 
                 <div class="home-pochette" >
-                    <v-field-label class="label-pochette">Playing now</v-field-label>
+                    <v-field-label class="label-pochette"> {{ $t("listPage.playingNow") }} </v-field-label>
                     <br/>
                     <img src="~/assets/Dont-worry-be-happy.jpg"/>
                     <br/>
@@ -22,7 +22,7 @@
                 <!-- <Pochette></Pochette> -->
                 
                 <div class="home-pochette">
-                    <v-field-label class="label-pochette">Next song</v-field-label>
+                    <v-field-label class="label-pochette">{{$t("listPage.playingNext")}}</v-field-label>
                     <br/>
                     <img src="~/assets/Ill-be-there-for-you.jpg"/>
                     <br/>
@@ -46,7 +46,7 @@
             </div>
             
             <div>
-                <v-btn class="add-song-button" text="Add a song" @click="login"></v-btn>
+                <v-btn class="add-song-button" :text='$t("listPage.addASong")' @click="login"></v-btn>
             </div>
         </div>
     </div>

@@ -6,13 +6,13 @@
 
         <div class="right">
             <div class="login-title">
-                <h2>Login</h2>
+                <h2>{{$t("login.header")}}</h2>
             </div>
 
             <form class="form">
                 <v-text-field
                     clearable
-                    label="Email"
+                    :label='$t("login.email")'
                     :rules="rules"
                     hide-details="auto">
                 </v-text-field>
@@ -20,14 +20,14 @@
 
             <form class="form">
                 <v-text-field
-                    label="Password"
+                    :label='$t("login.password")'
                     :rules="rules"
                     type="password">
                 </v-text-field>
             </form>
 
-            <v-btn class="login-button" text="Login" @click="login"></v-btn>
-            <nuxt-link class="link-header" to="/">Don’t have an account yet ? What are you waiting for !</nuxt-link>
+            <v-btn class="login-button" :text='$t("login.login")' @click="login"></v-btn>
+            <nuxt-link class="link-header" to="/">{{ $t("login.noAccount") }}</nuxt-link>
         </div>
     </div>
 </template>

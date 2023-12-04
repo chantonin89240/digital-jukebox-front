@@ -1,6 +1,6 @@
 <template>
     <div class="home-pochette" >
-        <v-field-label class="label-pochette">Playing now</v-field-label>
+        <v-field-label class="label-pochette">{{$t("listPage.playingNow")}}</v-field-label>
         <br/>
         <v-card-title class="justify-center"/>
         <br/>

@@ -2,13 +2,13 @@
   <v-table>
     <thead>
       <tr>
-        <th>Id</th>
+        <th>{{$t("listPage.headers.Id")}}</th>
         <v-divider class="ms-3" inset></v-divider>
-        <th>Title</th>
+        <th>{{$t("listPage.headers.Title")}}</th>
         <v-divider class="ms-3" inset></v-divider>
-        <th>Artist</th>
+        <th>{{$t("listPage.headers.Artist")}}</th>
         <v-divider class="ms-3" inset></v-divider>
-        <th>Album</th>
+        <th>{{$t("listPage.headers.Album")}}</th>
         <v-divider class="ms-3" inset></v-divider>
         <th></th>
       </tr>

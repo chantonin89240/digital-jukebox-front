@@ -6,5 +6,23 @@
         "Monitor":"Moniteur",
         "Login":"Connection",
         "Logout":"Se déconnecter"
+    },
+    "listPage":{
+        "headers":{
+            "Id":"ID",
+            "Title":"Titre",
+            "Artist":"Artiste",
+            "Album":"Album"
+        },
+        "playingNow":"En cours de lecture:",
+        "playingNext":"Prochaine musique:",
+        "addASong":"Ajouter une musique"
+    },
+    "login":{
+        "header":"Connexion",
+        "email":"Email",
+        "password":"Mot de passe",
+        "login":"Se connecter",
+        "noAccount":"Vous n'avez pas encore de compte? Qu'attendez-vous!"
     }
 }

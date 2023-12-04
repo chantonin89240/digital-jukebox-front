@@ -12,11 +12,18 @@ export default defineNuxtConfig({
       '@nuxtjs/i18n',
       { /* i18n options */
         locales:[
-          "en",
-          "fr"
+          {
+            code:"en",
+            file:'en.json'
+          },
+          {
+            code:"fr",
+            file:'fr.json'
+          }
         ],
-        defaultLocale: "fr",
-        
+        defaultLocale: "en",
+        langDir:'locale',
+        lazy:true
       }
     ],
     (_options, nuxt) => {
@@ -35,11 +42,3 @@ export default defineNuxtConfig({
     },
   },
 });
-/*
-  modules: [
-    '@nuxtjs/i18n',
-  ],
-  i18n: {
-    /* module options 
-  }
-*/

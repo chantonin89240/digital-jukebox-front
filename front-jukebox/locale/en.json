@@ -1,10 +1,28 @@
 {
     "adminLayout":{
-        "Catalogs":"Catalogs",
-        "Playlist":"Playlist",
-        "Management":"Management",
-        "Monitor":"Monitor",
-        "Login":"Login",
-        "Logout":"Log out"
+        "catalogs":"Catalogs",
+        "playlist":"Playlist",
+        "management":"Management",
+        "monitor":"Monitor",
+        "login":"Login",
+        "logout":"Log out"
+    },
+    "listPage":{
+        "headers":{
+            "Id":"ID",
+            "Title":"Title",
+            "Artist":"Artist",
+            "Album":"Album"
+        },
+        "playingNow":"Playing Now",
+        "playingNext":"Playing Next:",
+        "addASong":"Add A Song"
+    },
+    "login":{
+        "header":"Login",
+        "email":"Email",
+        "password":"Password",
+        "login":"Login",
+        "noAccount":"Don't have an account yet? What are you waiting for!"
     }
 }
