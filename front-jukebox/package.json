@@ -11,15 +11,16 @@
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
+    "lintfix": "prettier --write --list-different . && npm run lint:js --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@typescript-eslint/parser": "^6.7.3",
     "eslint": "^8.50.0",
-    "nuxt": "^3.7.4",
+    "nuxt": "^3.8.0",
     "typescript": "^5.2.2",
     "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.3.4",
