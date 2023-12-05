@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-app>
       <v-app-bar class="nav-bar">
         <v-btn icon class="btn-home" to="/">
           <v-icon>mdi mdi-home</v-icon>
@@ -8,7 +7,7 @@
         <v-divider class="ms-3" inset vertical></v-divider>
         <img class="img-logo" src="~/assets/jukebox-Logo.png" alt="Jukebox Logo" />
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("adminLayout.catalogs")}}</nuxt-link> <!-- to="/catalogs" -->
+        <nuxt-link class="link-header" to="/admin/addSongCatalog">{{$t("adminLayout.catalogs")}}</nuxt-link>
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" >{{$t("adminLayout.playlist")}}</nuxt-link> <!-- to="/playlist" -->
         <v-divider class="ms-3" inset vertical></v-divider>
@@ -19,9 +18,7 @@
         <nuxt-link class="link-header" >{{$t("adminLayout.login")}}</nuxt-link> <!-- to="/login" -->
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" @click="logout">{{$t("adminLayout.logout")}}</nuxt-link>
-
       </v-app-bar>
-    </v-app>
   </div>  
 </template>
 
@@ -39,8 +36,7 @@ const logout = () => {
   background: #4F626D;
   position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 1000;
+  /* width: 100%; */
 
 }
 
