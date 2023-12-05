@@ -1,66 +1,156 @@
 <template>
-    <div class="Home">
-        <div>
-          <div class="title">
-                <h2>Login</h2>
+    <div class="home-container">
+        <div class="home-left">
+            <v-col>
+                <!-- <Pochette></Pochette> -->
+                
+                <div class="home-pochette" >
+                    <v-field-label class="label-pochette">Playing now</v-field-label>
+                    <br/>
+                    <img src="~/assets/Dont-worry-be-happy.jpg"/>
+                    <br/>
+                    <v-col class="song">
+                        <v-label class="label-song">Bobby Mcferrin</v-label>
+                        <v-label class="label-song">Don’t Worry Be Happy</v-label>
+                    </v-col>
+                </div>
+
+                <div class="horizontal-line">
+                    <v-divider class="ms-3 border-opacity-100" inset></v-divider> <!-- horizontal-line -->
+                </div>
+
+                <!-- <Pochette></Pochette> -->
+                
+                <div class="home-pochette">
+                    <v-field-label class="label-pochette">Next song</v-field-label>
+                    <br/>
+                    <img src="~/assets/Ill-be-there-for-you.jpg"/>
+                    <br/>
+                    <v-col class="song">
+                        <v-label class="label-song">The Rembrandts</v-label>
+                        <v-label class="label-song">I'll be there for you</v-label>
+                    </v-col>
+                    
+                </div>
+            </v-col>
+            
+        </div>
+
+        <v-divider class="ms-3 border-opacity-100" inset vertical></v-divider>
+
+        <div class="home-right">
+            <v-divider class="border-opacity-100" vertical></v-divider>
+            <!-- <v-data-table/> -->
+            <div class="playlist-tab">
+                <Datatab/>
             </div>
-
-            <form class="form">
-                <v-text-field
-                  clearable
-                  label="Email"
-                  hide-details="auto">
-                </v-text-field>
-            </form>
-
-            <form class="form">
-                <v-text-field
-                  clearable
-                  label="Password">
-                </v-text-field>
-            </form>
-
-            <v-btn text="Login"></v-btn>
-            <nuxt-link class="link-header" to="/">Don’t have an account yet ? What are you waiting for !</nuxt-link>
-          </div>
+            
+            <div>
+                <v-btn class="add-song-button" text="Add a song" @click="login"></v-btn>
+            </div>
+        </div>
     </div>
 </template>
 
-<script lang="ts" setup>
-definePageMeta ({
-  layout: 'admin-layout',
-});
+<script>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+export default {
+    setup() {
+        const router = useRouter();
+
+        const login = () => {
+            router.push('/search');
+        };
+
+        return {
+            login,
+        };
+    },
+};
 </script>
 
-
 <style>
-.container{
+.home-container{
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
+    background: #287271;
+}
+    
+.home-left {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
 }
 
-.title {
-    background: #E76F51;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.horizontal-line {
+    display: flex;
+    padding-left: 20%;
+    /* padding-bottom: 5%;
+    padding-top: 5%; */
+    
+}
+
+.home-right {
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-pochette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-bottom: 5%;
+    padding-top: 5%; */
+}
+
+.label-pochette {
+    color: white;
     font-weight: bold;
-    font-size: 35px;
-    padding-bottom: 15%;
-    padding-top: 5%;
+}
+
+.label-song {
+    color: white;
+}
+
+.song {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-bottom: 5%;
+    padding-top: 5%; */
 }
 
 .form {
     flex-direction: column;
     align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* padding-bottom: 5%;
+    padding-top: 5%; */
+}
+
+.playlist-tab {
+    margin-left: 5%;
+    margin-right: 5%;
     padding-bottom: 5%;
     padding-top: 5%;
 }
 
-app-button {
-   margin-block: 10%;
-   color: #E76F51;
+.add-song-button {
+    background-color: #E76F51;
+    color: white;
+    margin-left: 5%;
+    margin-right: 5%;
 }
+
+/* .img-album {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+} */
 
 </style>
