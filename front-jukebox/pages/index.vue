@@ -7,7 +7,7 @@
                 <div class="home-pochette" >
                     <v-field-label class="label-pochette">Playing now</v-field-label>
                     <br/>
-                    <img src="~/assets/Dont-worry-be-happy.jpg"/>
+                    <img src="~/assets/img/Dont-worry-be-happy.jpg"/>
                     <br/>
                     <v-col class="song">
                         <v-label class="label-song">Bobby Mcferrin</v-label>
@@ -24,7 +24,7 @@
                 <div class="home-pochette">
                     <v-field-label class="label-pochette">Next song</v-field-label>
                     <br/>
-                    <img src="~/assets/Ill-be-there-for-you.jpg"/>
+                    <img src="~/assets/img/Ill-be-there-for-you.jpg"/>
                     <br/>
                     <v-col class="song">
                         <v-label class="label-song">The Rembrandts</v-label>

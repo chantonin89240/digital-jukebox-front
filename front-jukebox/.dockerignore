@@ -1,0 +1,27 @@
+# Fichiers de configuration et dossiers
+**/.env*
+**/.dockerignore
+**/.git
+**/.gitignore
+**/.nuxt
+**/node_modules
+**/npm-debug.log
+**/yarn-error.log
+
+# Fichiers spécifiques à l'éditeur
+**/.idea
+**/*.sublime*
+**/.vscode
+
+# Autres fichiers et dossiers
+**/Dockerfile
+**/README.md
+**/LICENSE
+**/tests/
+**/__tests__/
+**/coverage/
+**/*.log
+
+# Fichiers temporaires
+**/.DS_Store
+**/Thumbs.db
