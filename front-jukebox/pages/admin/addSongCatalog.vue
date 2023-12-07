@@ -6,9 +6,10 @@
           <v-text-field v-model="search" :rules="searchSong" required label="Song, Artist or Album name"></v-text-field>
           <!-- NE PAS SUPPRIMER = select pour provider -->
           <!-- <v-select v-model="select" label="Provider" :items="items" item-title="provider" item-value="id" required :rules="v => !!v || 'Select one provider !'" persistent-hint return-object single-line ></v-select> -->
-
-          <v-btn color="success" type="submit" class="me-4">Validate</v-btn>
-          <v-btn @click="reset" color="error">clear</v-btn>
+          <div class="containButton">
+            <v-btn color="success" type="submit" class="me-4">Validate</v-btn>
+            <v-btn @click="reset" color="error">clear</v-btn>
+          </div>
         </v-form>      
     </span>
   </div>
@@ -20,25 +21,33 @@
   
   <!-- partie affichage des song retourner -->
   <div class="">
-    <v-card class="mx-auto">
       <v-container class="pa-1">
         <v-item-group v-model="selection" multiple>
           <v-row>
+            <!-- liste des song retourner par le provider -->
             <v-col v-for="(item,song) in songs" :key="song" cols="12" md="4">
+              <!-- card de mise en forme -->
+              <v-card class="mx-auto">
               <v-item>
-                <v-img
-                  :src="`${item.album.cover}`"
-                  height="150"
-                  class="text-right pa-2">
-                </v-img>
-                <p>Title : {{ item.title }}</p>
-                <v-btn>add</v-btn>
+                <!-- image de la pochette -->
+                <v-img :src="`${item.album.cover}`" height="150" class="text-right pa-2"></v-img>
+                <!-- div des informations -->
+                <div class="containInfor">
+                  <p>Title : {{ item.title }}</p>
+                  <p>Artist name : {{ item.artist.name }}</p>
+                  <p>Album name : {{ item.album.title }}</p>
+                </div>
+                <!-- div du button d'ajout -->
+                <div class="containButton">
+                  <v-btn class="buttonAddSong">add</v-btn>
+                </div>
               </v-item>
+              </v-card>
             </v-col>
           </v-row>
         </v-item-group>
       </v-container>
-    </v-card>
+    
   </div>
 </template>
 
@@ -64,8 +73,7 @@
     methods: {
       async validateSearch(){
         const uri = defaultUrl + '/catalogs/search/' + this.search
-        console.log(uri)
-        axios.get(defaultUrl + '/catalogs/search/' + this.search).then(res => {
+        axios.get(uri).then(res => {
             console.log(res.data)
             this.songs = res.data
         })
@@ -82,12 +90,16 @@
 <style scoped>
 .providerContainer{
   margin: 3em;
+  padding: 1em;
 }
-span{
-  text-align: -webkit-center;
+.containInfor{
+  padding: 1em;
 }
-hr{
-  margin: 1em;
-  width: 60%;
+.containButton{
+  text-align-last: center;
+  padding: 1em;
+}
+.buttonAddSong {
+  width: 8em;
 }
 </style>

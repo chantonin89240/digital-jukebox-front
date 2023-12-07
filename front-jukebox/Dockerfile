@@ -5,7 +5,7 @@ FROM node:18 AS build
 WORKDIR /app
 
 # Copiez les fichiers package.json et package-lock.json (ou yarn.lock si vous utilisez Yarn)
-COPY package*.json ./front-jukebox
+COPY package*.json ./
 
 # Installez les dépendances de votre projet
 RUN npm install
@@ -18,7 +18,7 @@ RUN npm run build
 
 FROM node:18 AS production
 WORKDIR /app
-COPY --from=build /app ./front-jukebox
+COPY --from=build /app ./
 
 EXPOSE 3000
 CMD ["npm", "start"]

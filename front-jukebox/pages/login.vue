@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="left">
-            <img class="img-main-logo" src="~/assets/jukebox-Logo.png" alt="Jukebox Logo" />
+            <img class="img-main-logo" src="~/assets/img/Jukebox-Logo.png" alt="Jukebox Logo" />
         </div>
 
         <div class="right">
@@ -48,7 +48,7 @@ export default {
         ];
 
         const login = () => {
-            router.push('/home/home');
+            router.push('/');
         };
 
         return {
@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style>
+
 .container{
     margin: 0 auto;
     min-height: 100vh;

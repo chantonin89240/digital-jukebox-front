@@ -5,7 +5,7 @@
           <v-icon>mdi mdi-home</v-icon>
         </v-btn>
         <v-divider class="ms-3" inset vertical></v-divider>
-        <img class="img-logo" src="~/assets/jukebox-Logo.png" alt="Jukebox Logo" />
+        <img class="img-logo" src="@/assets/img/Jukebox-Logo.png" alt="Jukebox Logo" />
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" to="/admin/addSongCatalog">{{$t("adminLayout.catalogs")}}</nuxt-link>
         <v-divider class="ms-3" inset vertical></v-divider>
