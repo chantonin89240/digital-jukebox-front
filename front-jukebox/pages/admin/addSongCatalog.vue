@@ -3,7 +3,7 @@
   <div class="providerContainer">
     <span>
         <v-form ref="form" @submit.prevent="validateSearch" >
-          <v-text-field v-model="search" :rules="searchSong" required label="Song, Artist or Album name"></v-text-field>
+          <v-text-field v-model="search" class="inputSearch" :rules="searchSong" required label="Song, Artist or Album name"></v-text-field>
           <!-- NE PAS SUPPRIMER = select pour provider -->
           <!-- <v-select v-model="select" label="Provider" :items="items" item-title="provider" item-value="id" required :rules="v => !!v || 'Select one provider !'" persistent-hint return-object single-line ></v-select> -->
           <div class="containButton">
@@ -39,7 +39,7 @@
                 </div>
                 <!-- div du button d'ajout -->
                 <div class="containButton">
-                  <v-btn class="buttonAddSong">add</v-btn>
+                  <v-btn class="buttonAddSong" @click="addSongCatalog(item.id)">add</v-btn>
                 </div>
               </v-item>
               </v-card>
@@ -82,6 +82,9 @@
         const refform: any = this.$refs.form;
         refform.reset()
       },
+      async addSongCatalog(idSong: bigint){
+          
+      }
     }
   }
 </script>
@@ -91,6 +94,10 @@
 .providerContainer{
   margin: 3em;
   padding: 1em;
+  
+}
+.inputSearch{
+  background: #fff;
 }
 .containInfor{
   padding: 1em;
@@ -98,6 +105,7 @@
 .containButton{
   text-align-last: center;
   padding: 1em;
+  color: #E9C46A;
 }
 .buttonAddSong {
   width: 8em;
