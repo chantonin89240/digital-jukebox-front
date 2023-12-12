@@ -1,6 +1,8 @@
 <template>
     <p v-if=pending>Chargement...</p>
-    <p v-else-if="error">{{ error }}</p>
+    <p v-else-if="error">
+        {{ error }}
+    </p>
     <v-list lines="two" v-else>
         <v-list-item 
             v-for="bill in billings"
@@ -13,22 +15,21 @@
 
 <script lang="ts" scoped>
 
-let URL = "https://localhost:7264/Billing"
+let URL = "https://127.0.0.1:7264/Billing"
 
 
 export default { 
     data : () => ({
+        
     }),
     setup : async () => {
-        
         let {data, pending, error} = await useFetch<Array<ApiBilling>>(URL);
         
         var billings = data.value;
         
         if(billings){
             billings.forEach( (billing, index) => {
-                // @ts-ignore :: 'billings' is detected as "possibly null" in line below, but not in line above.
-                billings[index].dateBilling = DateFromAspString(billing.dateBilling).toDateString();
+                billings![index].dateBilling = DateFromAspString(billing.dateBilling).toDateString();
             });
         }
         

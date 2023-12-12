@@ -42,8 +42,5 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
-  },
-  // WARN:: THE FOLLOWING LINE IS CAUSING SSR TO BE REMOVED. 
-  // ssr is activated by default, but /user/billingSong cannot fetch data with it on! 
-  ssr:false
+  }
 });
