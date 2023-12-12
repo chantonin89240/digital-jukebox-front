@@ -1,9 +1,7 @@
 <template>
-    Hello World!
     <p v-if=pending>Chargement...</p>
     <p v-else-if="error">{{ error }}</p>
     <v-list lines="two" v-else>
-        {{ billings }}
         <v-list-item 
             v-for="bill in billings"
             :key="bill.billingId"
