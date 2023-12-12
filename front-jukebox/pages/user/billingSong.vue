@@ -23,6 +23,8 @@ export default {
         
     }),
     setup : async () => {
+        // Fetch failures may be due to certificate being self-signed. 
+        // Add NODE_TLS_REJECT_UNAUTHORIZED = 0 to '.env' to bypass.
         let {data, pending, error} = await useFetch<Array<ApiBilling>>(URL);
         
         var billings = data.value;
