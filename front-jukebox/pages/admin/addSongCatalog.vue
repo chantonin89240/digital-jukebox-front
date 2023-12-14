@@ -39,7 +39,7 @@
                 </div>
                 <!-- div du button d'ajout -->
                 <div class="containButton">
-                  <v-btn class="buttonAddSong" @click="addSongCatalog(item.id)">add</v-btn>
+                  <v-btn class="buttonAddSong" @click="addSongCatalog(item.id, item.title, item.link, item.artist.name, item.album.title, item.album.cover)">add</v-btn>
                 </div>
               </v-item>
               </v-card>
@@ -47,7 +47,12 @@
           </v-row>
         </v-item-group>
       </v-container>
-    
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ textSnackbar }}
+      <template v-slot:actions>
+        <v-btn color="blue" variant="textSnackbar" @click="snackbar = false">Close</v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
@@ -67,14 +72,16 @@
       searchSong: {
         required: (value: string) => !!value || 'Field is required',
       },
-      songs: []
+      songs: [],
+      snackbar: false,
+      textSnackbar: '',
+      timeout: 3000,
     }),
 
     methods: {
       async validateSearch(){
         const uri = defaultUrl + '/catalogs/search/' + this.search
         axios.get(uri).then(res => {
-            console.log(res.data)
             this.songs = res.data
         })
       },
@@ -82,8 +89,33 @@
         const refform: any = this.$refs.form;
         refform.reset()
       },
-      async addSongCatalog(idSong: bigint){
-          
+      async addSongCatalog(idSong: bigint, title: string, link: string, artiste: string, album: string, cover: string){
+          const uri = defaultUrl + '/catalogs'
+          axios.post(uri, {
+            idbar: 1,
+            idTrack: idSong,
+            titleSong: title,
+            link: link,
+            artistName: artiste,
+            albumName: album,
+            cover: cover
+          })
+          .then( (response) => {
+            if(response.status == 200){
+              console.log(this.textSnackbar)
+              this.textSnackbar = 'le titre à été ajouté au catalog'
+              this.snackbar = true
+              console.log(this.textSnackbar)
+            }
+            if(response.status == 204){
+              this.textSnackbar = 'le titre ce trouve déjà dans le catalog'
+              this.snackbar = true
+            }
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     }
   }

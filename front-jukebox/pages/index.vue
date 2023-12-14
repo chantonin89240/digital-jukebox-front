@@ -68,6 +68,10 @@ export default {
         };
     },
 };
+// definePageMeta({
+//   middleware: 'accessHome'
+// })
+
 </script>
 
 <style>
