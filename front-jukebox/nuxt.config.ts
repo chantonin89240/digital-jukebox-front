@@ -2,6 +2,20 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Jukeboxe application',
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Friends 'n Fun your homelike hangout.",
+        },
+      ],
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    }
+  },
   build: {
     transpile: [/vuetify/]
   },

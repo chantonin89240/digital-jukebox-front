@@ -1,7 +1,7 @@
 <template>
   <div>
       <v-app-bar class="nav-bar">
-        <v-btn icon class="btn-home" to="/">
+        <v-btn style="color: black;" icon class="btn-home" to="/">
           <v-icon>mdi mdi-home</v-icon>
         </v-btn>
         <v-divider class="ms-3" inset vertical></v-divider>
@@ -17,7 +17,7 @@
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" >{{$t("adminLayout.login")}}</nuxt-link> <!-- to="/login" -->
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" @click="logout">{{$t("adminLayout.logout")}}</nuxt-link>
+        <nuxt-link class="link-header" to="/login">{{$t("adminLayout.logout")}}</nuxt-link> <!-- @click="logout"-->
       </v-app-bar>
   </div>  
 </template>
