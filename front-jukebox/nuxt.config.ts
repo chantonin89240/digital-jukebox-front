@@ -2,6 +2,12 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    apiSecret: '',
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API
+    }
+  },
   app: {
     head: {
       title: 'Jukeboxe application',
@@ -26,7 +32,7 @@ export default defineNuxtConfig({
     [ 
       '@nuxtjs/i18n',
       { /* i18n options */
-        vueI18n:"./i18n.config.ts",
+        
         locales:[
           {
             code:"en",
