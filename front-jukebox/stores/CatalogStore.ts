@@ -42,33 +42,52 @@ interface Catalog {
     idTrack: bigint,
     titleSong: string,
     link: string,
-    artistName: any,
-    albumName: any,
+    artistName: string,
+    albumName: string,
     cover: string
 }
 
 interface Provider {
-    provider: [];
-    data: Catalog[] | null;
-    loading: boolean;
-    error: string | null;
+    provider: Track[] | null;
+    statutAdd: number;
 }
 const runtimeConfig = useRuntimeConfig()
-export const useApiStore = defineStore('catalogStore', {
+export const useCatalogStore = defineStore('catalogStore', {
    
     state: (): Provider => ({
-        provider: [],
-        data: null,
-        loading: false,
-        error: null,
+        provider: null,
+        statutAdd: 0
       }),
+      getters: {
+        resultProvider: (state) => state.provider,
+        resultStatut: (state) => state.statutAdd,
+      },
       actions: {
         async searchProvider(search: string) {
-          const { data, pending, error, status } = useFetch<Provider>(runtimeConfig.public.apiBase + '/catalogs/search/' + search, {
+          const { data, pending, error, status } = await useFetch<Track[]>(runtimeConfig.public.apiBase + '/catalogs/search/' + search, {
             method: 'GET'
           })
 
           this.provider = data.value;
         },
+        async addSongInCatalog(idbar: bigint, idSong: bigint, title: string, link: string, artiste: string, album: string, cover: string) {
+          let statusCode = 0
+          const { data, pending, error, status } = await useFetch(runtimeConfig.public.apiBase + '/catalogs', {
+            method: 'POST',
+            body: {
+              idbar: idbar,
+              idTrack: idSong,
+              titleSong: title,
+              link: link,
+              artistName: artiste,
+              albumName: album,
+              cover: cover
+            },
+            onResponse({response}){
+              statusCode = response.status;
+            }
+          })
+          this.statutAdd = statusCode;
+        }
     },
 });

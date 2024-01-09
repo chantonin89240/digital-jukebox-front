@@ -15,12 +15,7 @@
       </span>
     </div>
 
-    <!-- séparation des parties
-    <span>
-      <hr>
-    </span> -->
-    
-    <!-- partie affichage des song retourner -->
+    <!-- partie affichage des song retourné -->
     <div class="">
         <v-container class="pa-1">
           <v-item-group v-model="selection" multiple>
@@ -59,7 +54,8 @@
 </template>
 
 <script lang="ts" scoped>
-  import { catalogStore } from '../../stores/CatalogStore'
+  import { useCatalogStore } from '../../stores/CatalogStore';
+  const catalogStore = useCatalogStore();
 
   export default {
     data: () => ({
@@ -81,44 +77,25 @@
 
     methods: {
       async validateSearch(){
+        await catalogStore.searchProvider(this.search)
 
-        
-        const uri = defaultUrl + '/catalogs/search/' + this.search
-        axios.get(uri).then(res => {
-            this.songs = res.data
-        })
+        this.songs = catalogStore.resultProvider
       },
       reset(){
         const refform: any = this.$refs.form;
         refform.reset()
       },
       async addSongCatalog(idSong: bigint, title: string, link: string, artiste: string, album: string, cover: string){
-          const uri = defaultUrl + '/catalogs'
-          axios.post(uri, {
-            idbar: 1,
-            idTrack: idSong,
-            titleSong: title,
-            link: link,
-            artistName: artiste,
-            albumName: album,
-            cover: cover
-          })
-          .then( (response) => {
-            if(response.status == 200){
-              console.log(this.textSnackbar)
-              this.textSnackbar = 'le titre à été ajouté au catalog'
-              this.snackbar = true
-              console.log(this.textSnackbar)
-            }
-            if(response.status == 204){
-              this.textSnackbar = 'le titre ce trouve déjà dans le catalog'
-              this.snackbar = true
-            }
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          await catalogStore.addSongInCatalog(1, idSong, title, link, artiste, album, cover)
+
+          if(catalogStore.resultStatut == 200){
+            this.textSnackbar = 'le titre à été ajouté au catalog'
+            this.snackbar = true
+          }
+          if(catalogStore.resultStatut == 204){
+            this.textSnackbar = 'le titre ce trouve déjà dans le catalog'
+            this.snackbar = true
+          }
       }
     }
   }
