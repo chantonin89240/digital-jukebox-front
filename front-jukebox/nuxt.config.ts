@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API
     }
   },
+  // SSR nuxt
   app: {
     head: {
       title: 'Jukeboxe application',
@@ -29,10 +30,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@pinia/nuxt',
-    [ 
+    [
       '@nuxtjs/i18n',
       { /* i18n options */
-        
+
         locales:[
           {
             code:"en",
