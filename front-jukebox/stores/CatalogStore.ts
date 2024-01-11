@@ -48,9 +48,10 @@ interface Catalog {
 }
 
 interface Provider {
-    provider: Track[] | null;
-    statutAdd: number;
+    provider: Track[] | null,
+    statutAdd: number
 }
+
 const runtimeConfig = useRuntimeConfig()
 export const useCatalogStore = defineStore('catalogStore', {
    
