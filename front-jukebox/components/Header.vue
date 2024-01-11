@@ -18,12 +18,37 @@
         <nuxt-link class="link-header" >{{$t("adminLayout.login")}}</nuxt-link> <!-- to="/login" -->
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" to="/login">{{$t("adminLayout.logout")}}</nuxt-link> <!-- @click="logout"-->
+        <template
+          v-for="locale in availableLocales"
+          :key="readLocaleCode(locale)"
+        >
+          <v-divider class="ms-3" inset vertical></v-divider>
+          <a
+            class="link-header"
+            href="#"
+            @click.prevent.stop="setLocale(readLocaleCode(locale))"
+            >
+            {{ readLocaleCode(locale) }}
+          </a>
+        </template>
       </v-app-bar>
   </div>  
 </template>
 
 
 <script lang="ts" setup>
+import type { LocaleObject } from 'vue-i18n-routing';
+const { locale, locales, setLocale } = useI18n()
+
+const availableLocales = computed(() => {
+  return (locales.value).filter(i => (<LocaleObject>i).code !== locale.value)
+})
+
+const readLocaleCode = (locale : string|LocaleObject) : string => {
+  if((<LocaleObject>locale).code) return (<LocaleObject>locale).code;
+  else return <string>locale   
+}
+
 const router = useRouter();
 const logout = () => {
   router.push('/login');
