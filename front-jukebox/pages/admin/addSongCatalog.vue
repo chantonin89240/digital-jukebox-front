@@ -54,6 +54,7 @@
 </template>
 
 <script setup lang="ts" scoped>
+// import
 import { ref, computed } from 'vue'
 import { useCatalogStore } from '../../stores/CatalogStore';
 const catalogStore = useCatalogStore();
