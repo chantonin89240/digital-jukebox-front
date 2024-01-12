@@ -9,7 +9,7 @@
             <!-- <v-select v-model="select" label="Provider" :items="items" item-title="provider" item-value="id" required :rules="v => !!v || 'Select one provider !'" persistent-hint return-object single-line ></v-select> -->
             <div class="containButton">
               <v-btn color="success" type="submit" class="me-4">Validate</v-btn>
-              <v-btn @click="reset" color="error">clear</v-btn>
+              <v-btn @click="resetFields" color="error">clear</v-btn>
             </div>
           </v-form>      
       </span>
@@ -53,52 +53,54 @@
   </div>
 </template>
 
-<script lang="ts" scoped>
-  import { useCatalogStore } from '../../stores/CatalogStore';
-  const catalogStore = useCatalogStore();
+<script setup lang="ts" scoped>
+// import
+import { ref, computed } from 'vue'
+import { useCatalogStore } from '../../stores/CatalogStore';
+const catalogStore = useCatalogStore();
 
-  export default {
-    data: () => ({
-      search: '',
-      select: { id: '1', provider: 'Deezer' },
-      items: [
-        { id: '1', provider: 'Deezer' },
-        { id: '2', provider: 'Spotify' },
-        { id: '3', provider: 'Youtube' },
-      ],
-      searchSong: {
-        required: (value: string) => !!value || 'Field is required',
-      },
-      songs: [],
-      snackbar: false,
-      textSnackbar: '',
-      timeout: 3000,
-    }),
+// propriété
+const search = ref('')
+const searchSong = ref('');
+const requiredValidator = (value) => !!value || 'Field is required';
+const searchSongError = computed(() => requiredValidator(searchSong.value));
+const songs = ref([]);
+const snackbar = ref(false);
+const textSnackbar = ref('');
+const timeout = ref(3000);
 
-    methods: {
-      async validateSearch(){
-        await catalogStore.searchProvider(this.search)
 
-        this.songs = catalogStore.resultProvider
-      },
-      reset(){
-        const refform: any = this.$refs.form;
-        refform.reset()
-      },
-      async addSongCatalog(idSong: bigint, title: string, link: string, artiste: string, album: string, cover: string){
-          await catalogStore.addSongInCatalog(1, idSong, title, link, artiste, album, cover)
-
-          if(catalogStore.resultStatut == 200){
-            this.textSnackbar = 'le titre à été ajouté au catalog'
-            this.snackbar = true
-          }
-          if(catalogStore.resultStatut == 204){
-            this.textSnackbar = 'le titre ce trouve déjà dans le catalog'
-            this.snackbar = true
-          }
-      }
-    }
+// méthode
+// # recherche avec le provider #
+const validateSearch = async () => {
+  const searchData = {
+    result: search.value
   }
+  // appel de l'action du store catalog
+  await catalogStore.searchProvider(searchData.result)
+  // incrémentation du tableau avec les résultats
+  songs.value = catalogStore.resultProvider
+}
+
+// # clear l'input de recherche #
+const resetFields = () => {
+  search.value = ''
+}
+
+// # ajouter le sons dans le catalog #
+const addSongCatalog = async (idSong: bigint, title: string, link: string, artiste: string, album: string, cover: string) => {
+  // appel de l'action du store catalog
+  await catalogStore.addSongInCatalog(1, idSong, title, link, artiste, album, cover)
+  // vérification du resultat et affichage du snackbar
+  if(catalogStore.resultStatut == 200){
+    textSnackbar.value = 'le titre à été ajouté au catalog'
+    snackbar.value = true
+  }
+  if(catalogStore.resultStatut == 204){
+    textSnackbar.value = 'le titre ce trouve déjà dans le catalog'
+    snackbar.value = true
+  }
+}
 </script>
 
 

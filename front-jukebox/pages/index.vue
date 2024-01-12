@@ -1,130 +1,109 @@
 <template>
-    <div class="home-container">
-        <div class="home-left">
-            <v-col>
-                <!-- <Pochette></Pochette> -->
-                
-                <div class="home-pochette" >
-                    <v-field-label class="label-pochette">Playing now</v-field-label>
-                    <br/>
-                    <img src="~/assets/img/Dont-worry-be-happy.jpg"/>
-                    <br/>
-                    <v-col class="song">
-                        <v-label class="label-song">Bobby Mcferrin</v-label>
-                        <v-label class="label-song">Don’t Worry Be Happy</v-label>
-                    </v-col>
-                </div>
-
-                <div class="horizontal-line">
-                    <v-divider class="ms-3 border-opacity-100" inset></v-divider> <!-- horizontal-line -->
-                </div>
-
-                <!-- <Pochette></Pochette> -->
-                
-                <div class="home-pochette">
-                    <v-field-label class="label-pochette">Next song</v-field-label>
-                    <br/>
-                    <img src="~/assets/img/Ill-be-there-for-you.jpg"/>
-                    <br/>
-                    <v-col class="song">
-                        <v-label class="label-song">The Rembrandts</v-label>
-                        <v-label class="label-song">I'll be there for you</v-label>
-                    </v-col>
-                    
-                </div>
-            </v-col>
-            
+    <div class="container">
+        <div class="left">
+            <img class="img-main-logo" src="~/assets/img/Jukebox-Logo.png" alt="Jukebox Logo" />
         </div>
 
-        <v-divider class="ms-3 border-opacity-100" inset vertical></v-divider>
+        <div class="right">
+            <div class="login-title">
+                <h2>{{$t("login.header")}}</h2>
+            </div>
 
-        <div class="home-right">
-            <v-divider class="border-opacity-100" vertical></v-divider>
-            <!-- <v-data-table/> -->
-            <div class="playlist-tab">
-                <Datatab/>
-            </div>
-            
-            <div>
-                <v-btn class="add-song-button" text="Add a song" @click="login"></v-btn>
-            </div>
+            <form class="form">
+                <v-text-field
+                    clearable
+                    :label='$t("login.email")'
+                    :rules="rules"
+                    hide-details="auto">
+                </v-text-field>
+            </form>
+
+            <form class="form">
+                <v-text-field
+                    :label='$t("login.password")'
+                    :rules="rules"
+                    type="password">
+                </v-text-field>
+            </form>
+
+            <v-btn class="login-button" :text='$t("login.login")' @click="login"></v-btn>
+            <nuxt-link class="link-header" to="/">{{ $t("login.noAccount") }}</nuxt-link>
         </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+
+definePageMeta({
+    layout: false,
+})
+
 export default {
     setup() {
         const router = useRouter();
 
+        const rules = [
+            (value: string | null) => !!value || 'Required.',
+            (value: string | null) => (value && value.length >= 3) || 'Min 3 characters',
+        ];
+
         const login = () => {
-            router.push('/search');
+            router.push('/home');
         };
 
         return {
+            rules,
             login,
         };
     },
 };
-// definePageMeta({
-//   middleware: 'accessHome'
-// })
-
 </script>
 
 <style>
-.home-container{
+.container{
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
-    background: #287271;
 }
     
-.home-left {
+.left {
     display: flex;
-    width: 30%;
+    background: #455B67;
+    width: 50%;
     justify-content: space-around;
 }
 
-.horizontal-line {
-    display: flex;
-    padding-left: 20%;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
-    
+.img-main-logo {
+     width: 100%;
+     height: 40%;
+     margin-left: 16px;
+     margin-right: 16px;
+     margin-top: 0px;
+     margin-bottom: 16px;
+     background-size: contain;
+     background-repeat: no-repeat;
 }
 
-.home-right {
-    width: 70%;
+.right {
+    /* display: flex; */
+    background: #E9C46A;
+    width: 50%;
     flex-direction: column;
     align-items: center;
 }
 
-.home-pochette {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
-}
-
-.label-pochette {
-    color: white;
+.login-title {
+    background: #E76F51;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-}
-
-.label-song {
-    color: white;
-}
-
-.song {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
+    font-size: 35px;
+    margin-left: 45%;
+    padding-bottom: 15%;
+    padding-top: 5%;
 }
 
 .form {
@@ -132,29 +111,24 @@ export default {
     align-items: center;
     margin-left: 5%;
     margin-right: 5%;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
-}
-
-.playlist-tab {
-    margin-left: 5%;
-    margin-right: 5%;
     padding-bottom: 5%;
     padding-top: 5%;
 }
 
-.add-song-button {
+.form_error {
+    color: red;
+    top: -100%;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+}
+
+.login-button {
     background-color: #E76F51;
     color: white;
     margin-left: 5%;
     margin-right: 5%;
-}
-
-/* .img-album {
-    margin-left: 5%;
-    margin-right: 5%;
     padding-bottom: 5%;
     padding-top: 5%;
-} */
-
+}
 </style>
