@@ -77,8 +77,8 @@ const playlistStore = usePlaylistStore();
 
 // Utiliser les métadonnées SEO
 useSeoMeta({
-  title: "Dijital jukebox - home page",
-  ogTitle: "Dijital jukebox - home page",
+  title: "Dijital jukebox - Home page",
+  ogTitle: "Dijital jukebox - Home page",
   description: "This is the home page",
   ogDescription: "This is the home page",
 });

@@ -70,10 +70,10 @@ const textSnackbar = ref('');
 const timeout = ref(3000);
 
 useSeoMeta({
-  title: "Dijital jukebox - home page",
-  ogTitle: "Dijital jukebox - home page",
-  description: "This is the home page",
-  ogDescription: "This is the home page",
+  title: "Dijital jukebox - Catalog page",
+  ogTitle: "Dijital jukebox - Catalog page",
+  description: "This is the catalog page",
+  ogDescription: "This is the catalog page",
 });
 
 // méthode
