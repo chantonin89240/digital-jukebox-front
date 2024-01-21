@@ -11,9 +11,9 @@
     </div>
 </template>
 
-<!-- <script setup>
-import AdminHeader from '~/components/Header.vue'
-</script> -->
+<script setup>
+import AdminHeader from '../components/Header.vue'
+</script>
 
 <style scoped>
 #containerPage{

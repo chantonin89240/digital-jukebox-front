@@ -1,19 +1,19 @@
 <template>
   <div>
-    <!-- <Head> 
+    <Head> 
       <Title>{{ title }}</Title>
-    </Head> -->
+    </Head>
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
   </div>
 </template>
 
-<script setup lang="ts">
-const title = ref('Jukeboxe application')
-
-// useSeoMeta({
-//   title,
-//   description: () => `description: ${title.value}`
-// })
+<script setup>
+useHead({
+  title: 'Dijital jukebox',
+  meta: [
+    { name: 'Dijital jukebox', content: 'My dijital jukebox.' }
+  ]
+})
 </script>

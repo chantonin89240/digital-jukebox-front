@@ -53,7 +53,7 @@
   </div>
 </template>
 
-<script setup lang="ts" scoped>
+<script setup scoped>
 // import
 import { ref, computed } from 'vue'
 import { useCatalogStore } from '../../stores/CatalogStore';
@@ -69,6 +69,12 @@ const snackbar = ref(false);
 const textSnackbar = ref('');
 const timeout = ref(3000);
 
+useSeoMeta({
+  title: "Dijital jukebox - home page",
+  ogTitle: "Dijital jukebox - home page",
+  description: "This is the home page",
+  ogDescription: "This is the home page",
+});
 
 // méthode
 // # recherche avec le provider #
@@ -88,7 +94,7 @@ const resetFields = () => {
 }
 
 // # ajouter le sons dans le catalog #
-const addSongCatalog = async (idSong: bigint, title: string, link: string, artiste: string, album: string, cover: string) => {
+const addSongCatalog = async (idSong, title, link, artiste, album, cover) => {
   // appel de l'action du store catalog
   await catalogStore.addSongInCatalog(1, idSong, title, link, artiste, album, cover)
   // vérification du resultat et affichage du snackbar

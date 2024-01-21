@@ -39,73 +39,83 @@
         <v-divider class="ms-3 border-opacity-100" inset vertical></v-divider>
 
         <div class="home-right">
+
+          <p>{{ playlistArray.values.name }}</p>
+
             <v-divider class="border-opacity-100" vertical></v-divider>
             <!-- <v-data-table/> -->
             <div class="playlist-tab">
-                <!-- <Datatab/>-->
-                
-                <v-table>
-    <thead>
-      <tr>
-        <th>{{$t("listPage.headers.Id")}}</th>
-        <v-divider class="ms-3" inset></v-divider>
-        <th>{{$t("listPage.headers.Title")}}</th>
-        <v-divider class="ms-3" inset></v-divider>
-        <th>{{$t("listPage.headers.Artist")}}</th>
-        <v-divider class="ms-3" inset></v-divider>
-        <th>{{$t("listPage.headers.Album")}}</th>
-        <v-divider class="ms-3" inset></v-divider>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody v-for="(item,song) in playlistArray.values" :key="song">
-      <tr>
-        <td>{{ item.playlistSongs.songId }}</td>
-        <v-divider class="ms-3" inset></v-divider>
-        <td>Stay'in alive</td>
-        <v-divider class="ms-3" inset></v-divider>
-        <td>Bee Gees</td>
-        <v-divider class="ms-3" inset></v-divider>
-        <td>Saturday night fever</td>
-        <v-divider class="ms-3" inset></v-divider>
-        <td>
-          <v-icon>mdi-arrow-up-bold-circle-outline</v-icon>
-          <v-icon>mdi-arrow-down-bold-circle-outline</v-icon>
-          <v-icon>mdi-currency-usd</v-icon>
-        </td>
-      </tr>
-    </tbody>
-  </v-table> 
+                <v-container class="pa-1">
+                  <v-item-group v-model="selection" multiple>
+                    <v-row>
+                      <!-- liste des song retourner par le provider -->
+                      <v-col v-for="(item,song) in playlistArray.values" :key="song" cols="12" md="4">
+                        <p>Song id :{{ item.playlistSongs.SongId }}</p>
+                      </v-col>
+                    </v-row>
+                  </v-item-group>
+                </v-container> 
             </div>
             
             <div>
-                <v-btn class="add-song-button" text="Add a song" @click="login"></v-btn>
+                <v-btn class="add-song-button" text="Add a song" @click="getPlaylist()"></v-btn>
+                <v-btn class="add-song-button" text="Get playlist" @click="getPlaylist()"></v-btn>
             </div>
         </div>
     </div>
 </template>
 
-<script setup lang="ts" scoped>
+<script setup>
 // import
-import { ref, computed, onBeforeMount  } from 'vue'
+import { storeToRefs } from 'pinia';
+import { ref, computed, onMounted, watch  } from 'vue'
 import { usePlaylistStore } from '../stores/PlaylistStore';
+import { useRoute } from "vue-router";
+import { getPlaylistForABar } from "~/server/api/getPlaylist"
+
 const playlistStore = usePlaylistStore();
 
+// Utiliser les métadonnées SEO
+useSeoMeta({
+  title: "Dijital jukebox - home page",
+  ogTitle: "Dijital jukebox - home page",
+  description: "This is the home page",
+  ogDescription: "This is the home page",
+});
+
+// Définir les métadonnées de la page
+definePageMeta({
+  //middleware: ["auth"],
+});
 
 // propriété
-const IdBar = ref(1)
-const IdPlaylist = ref(4)
-const playlistArray = ([])
+const IdBar = ref(1);
+const IdPlaylist = ref(5);
+const playlistArray = ([]);
 
-// méthode
-//# OnbeforeMounted pour les fonctions avant l'affichage de la page 
-onBeforeMount(async () => {
-  // appel de l'action du store playlist
+// récupération de la playlist
+const getPlaylist = async () => {
   await playlistStore.searchPlaylist(IdBar.value, IdPlaylist.value)
-  // incrémentation du tableau avec les résultats
   playlistArray.values = playlistStore.resultPlaylist
-})
+  // playlistArray.splice(0,playlistArray.length,...playlistStore.resultPlaylist.playlistSongs)
+  console.log(playlistArray.values.name)
+}
+
+// async function getPlaylist(){
+//   try {
+//     const response = await getPlaylistForABar(IdBar.value, IdPlaylist.value)
+//     if (!Array.isArray(response)) {
+//       throw new Error('La réponse n\'est pas un tableau valide')
+//     }
+//     playlistArray.splice(0, playlists.length, ...response)
+//   } catch (error) {
+//     console.error('Erreur:', error)
+//   }
+// }
+
+onMounted(() => {
+  getPlaylist()
+});
 
 </script>
 

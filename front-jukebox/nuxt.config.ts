@@ -11,11 +11,11 @@ export default defineNuxtConfig({
   // SSR nuxt
   app: {
     head: {
-      title: 'Jukeboxe application',
+      title: 'Jukebox application',
       meta: [
         {
-          hid: "description",
-          name: "description",
+          hid: "My dijital jukebox",
+          name: "Dijital jukebox",
           content: "Friends 'n Fun your homelike hangout.",
         },
       ],
