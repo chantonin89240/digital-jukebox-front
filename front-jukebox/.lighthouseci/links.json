@@ -1,0 +1,7 @@
+{
+  "http://localhost:61484/200.html": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1706458426642-56828.report.html",
+  "http://localhost:61484/404.html": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1706458427509-20369.report.html",
+  "http://localhost:61484/index.html": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1706458428114-54749.report.html",
+  "http://localhost:61484/admin/addSongCatalog/index.html": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1706458429281-4431.report.html",
+  "http://localhost:61484/admin/manageAdmin/index.html": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1706458430248-19499.report.html"
+}
