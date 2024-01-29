@@ -79,7 +79,7 @@ const playlistStore = usePlaylistStore();
 
 // // Définir les métadonnées de la page
 // definePageMeta({
-//   //middleware: ["auth"],
+//   middleware: ["auth"],
 // });
 
 // propriété
