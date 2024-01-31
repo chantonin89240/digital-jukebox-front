@@ -14,7 +14,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
     "start": "nuxt start",
     "prepare": "husky init",
-    "lhautorun":"lhci autorun"
+    "lhautorun": "lhci autorun"
   },
   "devDependencies": {
     "@intlify/vue-i18n-bridge": "^1.0.1",
@@ -22,6 +22,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge@^8.0.0-rc.6-28359903.bcd6198",
+    "cypress": "^13.6.4",
     "eslint": "^8.50.0",
     "husky": "^9.0.6",
     "npm": "^10.2.4",
