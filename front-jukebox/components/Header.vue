@@ -9,8 +9,6 @@
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" to="/admin/addSongCatalog">{{$t("adminLayout.catalogs")}}</nuxt-link>
         <v-divider class="ms-3" inset vertical></v-divider>
-        <nuxt-link class="link-header" >{{$t("adminLayout.playlist")}}</nuxt-link> <!-- to="/playlist" -->
-        <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" >{{$t("adminLayout.management")}}</nuxt-link> <!-- to="/management" -->
         <v-divider class="ms-3" inset vertical></v-divider>
         <nuxt-link class="link-header" >{{$t("adminLayout.monitor")}}</nuxt-link> <!-- to="/monitor" -->

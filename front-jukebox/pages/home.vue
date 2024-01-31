@@ -40,18 +40,18 @@
             <div class="playlist-tab">
                 <v-container class="pa-1">
                   <v-item-group v-model="selection" multiple>
-                    <v-row>
                       <!-- liste des song retourner par le provider -->
-                      <v-col v-for="(item,song) in playlist.initPlaylist?.playlistSongs" :key="song" cols="12" md="4">
-                        <p>Song name :{{ item.song.title }}</p>
+                      <v-col v-for="(item,song) in playlist.initPlaylist?.playlistSongs" :key="song" cols="12">
+                            <p>Song id :{{ item.song.songId }}</p>
+                            <p>Song order :{{ item.playlistOrder }}</p>
+                            <p>Song name :{{ item.song.title }}</p> 
                       </v-col>
-                    </v-row>
                   </v-item-group>
                 </v-container> 
             </div>
             
             <div>
-                <v-btn class="add-song-button" text="Add a song" @click="getPlaylist()"></v-btn>
+                <v-btn class="add-song-button" text="Add a song" to="/AddSongPlaylist"></v-btn>
             </div>
         </div>
         <audio controls autoplay :src="playlist.initPlaylist?.playlistSongs[3].song.link"></audio>
@@ -66,6 +66,9 @@ import { usePlaylistStore } from '../stores/PlaylistStore';
 import { useRoute } from "vue-router";
 import { getPlaylistForABar } from "../server/api/getPlaylist"
 import { type InitPlaylist } from "../interfaces/playlist"
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const playlistStore = usePlaylistStore();
 
@@ -182,8 +185,6 @@ onMounted(() => {
 .playlist-tab {
     margin-left: 5%;
     margin-right: 5%;
-    padding-bottom: 5%;
-    padding-top: 5%;
 }
 
 .add-song-button {
