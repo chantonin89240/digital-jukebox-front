@@ -1,61 +1,61 @@
 <template>
-    <div class="home-container">
-        <div class="home-left">
-            <v-col>                
-                <div class="home-pochette" >
-                    <v-field-label class="label-pochette">Playing now</v-field-label>
-                    <br/>
-                    <img :src="playlist.initPlaylist?.playlistSongs[0].song.cover"/>
-                    <br/>
-                    <v-col class="song">
-                        <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[0].song.author }}</v-label>
-                        <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[0].song.title }}</v-label>
-                    </v-col>
-                </div>
-
-                <div class="horizontal-line">
-                    <v-divider class="ms-3 border-opacity-100" inset></v-divider> <!-- horizontal-line -->
-                </div>
-                
-                <div class="home-pochette">
-                    <v-field-label class="label-pochette">Next song</v-field-label>
-                    <br/>
-                    <img :src="playlist.initPlaylist?.playlistSongs[2].song.cover"/>
-                    <br/>
-                    <v-col class="song">
-                        <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[2].song.author }}</v-label>
-                        <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[2].song.title }}</v-label>
-                    </v-col>
-                    
-                </div>
+  <div>
+    <div class="lecture">
+      <audio controls autoplay :src="playlist.initPlaylist?.playlistSongs[3].song.link"></audio>
+    </div>
+    
+    <v-container>
+      <v-row>
+        <v-col cols="4">  
+          <v-row>
+            <v-col>
+              <div class="pochette">
+                <v-label class="label-pochette">Playing now</v-label>
+                <br/>
+                <img :src="playlist.initPlaylist?.playlistSongs[0].song.cover"/>
+                <br/>
+                <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[0].song.author }}</v-label>
+                <br/>
+                <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[0].song.title }}</v-label>
+              </div>
             </v-col>
-            
-        </div>
-
+          </v-row>   
+          <v-divider class="ms-3 border-opacity-100" inset></v-divider>
+          <v-row>
+            <v-col>
+              <div class="pochette">
+                <v-label class="label-pochette">Next song</v-label>
+                <br/>
+                <img :src="playlist.initPlaylist?.playlistSongs[2].song.cover"/>
+                <br/>
+                <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[2].song.author }}</v-label>
+                <br/>
+                <v-label class="label-song">{{ playlist.initPlaylist?.playlistSongs[2].song.title }}</v-label>
+              </div>
+            </v-col>
+          </v-row>
+        </v-col>
         <v-divider class="ms-3 border-opacity-100" inset vertical></v-divider>
-
-        <div class="home-right">
-            <v-divider class="border-opacity-100" vertical></v-divider>
-            <!-- <v-data-table/> -->
-            <div class="playlist-tab">
-                <v-container class="pa-1">
-                  <v-item-group v-model="selection" multiple>
-                      <!-- liste des song retourner par le provider -->
-                      <v-col v-for="(item,song) in playlist.initPlaylist?.playlistSongs" :key="song" cols="12">
-                            <p>Song id :{{ item.song.songId }}</p>
-                            <p>Song order :{{ item.playlistOrder }}</p>
-                            <p>Song name :{{ item.song.title }}</p> 
-                      </v-col>
-                  </v-item-group>
-                </v-container> 
+        <v-col class="listSong" cols="7">
+            <div>
+              <v-row>
+                <v-col v-for="(item,song) in playlist.initPlaylist?.playlistSongs" :key="song" cols="4">
+                  <div>
+                    <p>Order : {{ item.playlistOrder }}</p>
+                    <p>{{ item.song.author }} - {{ item.song.title }}</p>
+                    <p>{{ item.song.albumTitle }}</p> 
+                    <p>{{ item.song.style }}</p>
+                  </div>
+                </v-col>
+              </v-row>
             </div>
-            
             <div>
                 <v-btn class="add-song-button" text="Add a song" to="/AddSongPlaylist"></v-btn>
             </div>
-        </div>
-        <audio controls autoplay :src="playlist.initPlaylist?.playlistSongs[3].song.link"></audio>
-    </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -121,84 +121,36 @@ onMounted(() => {
 </script>
 
 <style>
-.home-container{
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    background: #287271;
-}
-    
-.home-left {
-    display: flex;
-    width: 30%;
-    justify-content: space-around;
-}
 
-.horizontal-line {
-    display: flex;
-    padding-left: 20%;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
-    
+.lecture{
+  padding: 2em;
+  text-align: center;
 }
-
-.home-right {
-    width: 70%;
-    flex-direction: column;
-    align-items: center;
+.pochette{
+  margin-top: 1em;
+  margin-bottom: 2em;
+  text-align: center;
 }
-
-.home-pochette {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
-}
-
 .label-pochette {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
-
 .label-song {
-    color: white;
+  color: white;
 }
-
+.listSong{
+  text-align: center;
+  color: white;
+  padding: 2em;
+}
 .song {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.form {
-    flex-direction: column;
-    align-items: center;
-    margin-left: 5%;
-    margin-right: 5%;
-    /* padding-bottom: 5%;
-    padding-top: 5%; */
-}
-
-.playlist-tab {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
 .add-song-button {
-    background-color: #E76F51;
-    color: white;
-    margin-left: 5%;
-    margin-right: 5%;
+  background-color: #E76F51;
+  color: white;
+  margin: 2em;
 }
-
-/* .img-album {
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-bottom: 5%;
-    padding-top: 5%;
-} */
-
 </style>
