@@ -44,7 +44,6 @@
                     <p>Order : {{ item.playlistOrder }}</p>
                     <p>{{ item.song.author }} - {{ item.song.title }}</p>
                     <p>{{ item.song.albumTitle }}</p> 
-                    <p>{{ item.song.style }}</p>
                   </div>
                 </v-col>
               </v-row>
@@ -90,6 +89,7 @@ const IdBar = ref(1);
 const IdPlaylist = ref(5);
 const playlistArray = reactive<Array<InitPlaylist>>([]);
 const playlist = reactive({initPlaylist : null})
+
 
 // récupération de la playlist
 // async function getPlaylist () {
